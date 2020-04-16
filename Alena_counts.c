@@ -14,7 +14,9 @@ int task (int i, int answer_task, int range[][2])
  //   printf ("range[0][0] = %d\n, range[0][1] = %d\n, range[1][0] = %d\n, range[1][1] = %d\n", range[0][0], range[0][1], range[1][0], range[1][1]);
 	printf ("\nПример №%d\n\nx = %d + %d", i, number1, number2);
     if (number3 != 0)
-        printf (" + %d", number3);
+        printf (" + %d\n", number3);
+    else
+        printf ("\n");
 	answer_task = number1 + number2 + number3;
 	return (answer_task);
 }
@@ -63,6 +65,8 @@ void difficulty (int level, int range[][2])
         range[0][1] = 12;
         range[1][0] = 12;
         range[1][1] = 19;
+        range[2][1] = 0;
+        range[2][1] = 0; 
     }
 }
 
@@ -74,12 +78,14 @@ int main (void)
 	int answer_task;
 	int answer_scan;
     char stop;
-    int range [3][2] = { {0, 0}, {0, 0} };
+    int range [3][2] = { {0, 0}, {0, 0}, {0, 0} };
     srand(time(NULL));
+    printf ("\nВведите уровень сложности: ");
+    scanf("%d", &level);
     while (level != 6)
     {
 	    printf ("\nУровень сложности №%d\n", level);
-        sleep (3);
+        sleep (2);
         task_n = 1;
         difficulty (level, range);
         folce = 0;
@@ -91,16 +97,15 @@ int main (void)
 		    if (answer_scan == answer_task)
 		    {
 			    printf ("\nПравильно! Притоговься к следующему заданию!\n");
-                sleep (3);
+                sleep (2);
 		    }
 		    if (answer_scan != answer_task)
 		    {
-			    printf ("Неправильно!\n Притоговся к следующему заданию!");
+			    printf ("\nНеправильно!\n Притоговся к следующему заданию!");
                 folce++;
-                sleep (3);
+                sleep (2);
             }
             task_n++;
-//            scanf("%s", &stop);
         }     
         if (folce == 0 || level != 3)
         {
