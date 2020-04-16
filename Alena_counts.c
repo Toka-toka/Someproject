@@ -7,11 +7,15 @@ int task (int i, int answer_task, int range[][2])
 {
 	int number1;
     int number2;
+    int number3;
 	number1 = range[0][0] + rand() % ( range[0][1] - range[0][0] + 1 );
     number2 = range[1][0] + rand() % ( range[1][1] - range[1][0] + 1 );
+    number3 = range[2][0] + rand() % ( range[2][1] - range[2][0] + 1 );
  //   printf ("range[0][0] = %d\n, range[0][1] = %d\n, range[1][0] = %d\n, range[1][1] = %d\n", range[0][0], range[0][1], range[1][0], range[1][1]);
-	printf ("\nПример №%d\n\nx = %d + %d\n", i, number1, number2);
-	answer_task = number1 + number2;
+	printf ("\nПример №%d\n\nx = %d + %d", i, number1, number2);
+    if (number3 != 0)
+        printf (" + %d", number3);
+	answer_task = number1 + number2 + number3;
 	return (answer_task);
 }
 
@@ -23,15 +27,37 @@ void difficulty (int level, int range[][2])
         range[0][1] = 10;
         range[1][0] = 3;
         range[1][1] = 10;
+        range[2][1] = 0;
+        range[2][1] = 0;
     }
     if (level == 2)
     {
         range[0][0] = 5;
         range[0][1] = 9;
-        range[1][0] = 10;
-        range[1][1] = 19;
+        range[1][0] = 5;
+        range[1][1] = 9;
+        range[2][1] = 5;
+        range[2][1] = 9;
     }
     if (level == 3)
+    {
+        range[0][0] = 10;
+        range[0][1] = 12;
+        range[1][0] = 12;
+        range[1][1] = 19;
+        range[2][1] = 0;
+        range[2][1] = 0;        
+    }
+    if (level == 4)
+    {
+        range[0][0] = 5;
+        range[0][1] = 9;
+        range[1][0] = 5;
+        range[1][1] = 9;
+        range[2][1] = 10;
+        range[2][1] = 19; 
+    }
+        if (level == 5)
     {
         range[0][0] = 10;
         range[0][1] = 12;
@@ -48,9 +74,9 @@ int main (void)
 	int answer_task;
 	int answer_scan;
     char stop;
-    int range [2][2] = { {0, 0}, {0, 0} };
+    int range [3][2] = { {0, 0}, {0, 0} };
     srand(time(NULL));
-    while (level != 4)
+    while (level != 6)
     {
 	    printf ("\nУровень сложности №%d\n", level);
         sleep (3);
